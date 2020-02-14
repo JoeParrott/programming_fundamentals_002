@@ -23,23 +23,56 @@ const catalogue = [
 ];
 
 function countBooks() {
-  // Your code here
+  return catalogue.length // Your code here
 }
 
 function checkBook(book) {
-  // Your code here
-}
+  for(let i = 0; i < catalogue.length; i++) {
+    const titles = catalogue[i];
+    if (titles === book) {
+      return true
+      }
+    }
+    return false;
+  }
 
 function countBooksByFirstLetter(letter) {
-  // Your code here
+  let total = 0;                                      // established a count
+      for (let i = 0; i < catalogue.length; i++) {    // started the loop
+       const titles = (catalogue[i].charAt(0));       // defined titles as the returned looping variables and looking at first letter only
+        if (letter === titles){                       // if conditional leading to count
+          total++;                                    // adding to total
+        }                                 
+      }
+  return total;                                       // return count (has to be outside of the function*!!!!)
 }
 
 function countBooksByKeyword(keyword) {
-  // Your code here
-}
+  let totalKeywords = 0;
+    for (let i = 0; i <catalogue.length; i++) {
+                                         // loop is going to execute all of this block for every entry in catalogue, lets point it to catalogue / do we need a loop if the .match() method is working and how do we return this value
+      if (catalogue[i].toLowerCase().match(keyword.toLowerCase())) {
+        totalKeywords++;
+      }
+        // is this a legal way of doing such a statement? how do methods work in terms of output??
+                                       // is this if statement even needed? is a loop + count cycle required? could it be done with other methods, .find .filter or other string methods
+                                        // will this have returned number values for both objects? it should have!
+        }
+        return totalKeywords
+  }
 
-function getBooksByAuthor(author) {
-  // Your code here
+
+function getBooksByAuthor(authName) {
+  let biblio = [];
+  for (i=0; i <catalogue.length; i++) {
+    // search for includes authName
+    if (catalogue[i].includes(authName)) {
+    //push catalogue entry to our bibliography
+      biblio.push(catalogue[i]);
+    }
+
+  }
+  return biblio
 }
 
 module.exports = {
